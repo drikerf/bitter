@@ -1,0 +1,19 @@
+extends layout
+block content
+    #content
+        .alert.alert-info.alert-dismissable
+            button.close(type="button", data-dismiss="alert", aria-hidden="true")
+                 &times;
+            p <strong>Hello!</strong> Pick a color, make a fun pattern and share :)
+        .row.colorPicker
+            .color.white
+            .color.red
+            .color.green
+            .color.blue
+            .color.currentColor.pull-right.red
+        .pictureGrid
+            each row in [0,1,2,3,4,5,6,7]
+                .row(id=row)
+                    each col in [0,1,2,3,4,5,6,7]
+                        .pix(id=row+''+col)
+        button(class="btn btn-primary btn-lg shareBtn") Share

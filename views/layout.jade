@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+    head
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= "Bitter - 8x8 fun"
+        link(href="http://fonts.googleapis.com/css?family=Montserrat:400,700", 
+            rel="stylesheet")
+        link(href="/css/bootstrap.min.css", rel="stylesheet")
+        link(href="/css/main.css", rel="stylesheet")
+        script(type="text/javascript").
+            // Twitter
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];
+            if(!d.getElementById(id)){js=d.createElement(s);
+                js.id=id;js.src="https://platform.twitter.com/widgets.js";
+                fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    body
+        .container
+            .content
+                h1 
+                    a(href="/") bitter
+                block content
+                hr
+                a(href="/about") About
+                p made by 
+                    a(href="http://twitter.com/drikerf") drikerf
+        script(src="/js/jquery-1.10.2.min.js")
+        script(src="/js/bootstrap.min.js")                
+        script(src="/js/main.js")
