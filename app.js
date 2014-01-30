@@ -28,18 +28,13 @@ app.use(express.bodyParser());
 
 // Mongoose setup
 if (environ == 'production') {
-    var options = {
-        user: process.env.DB_USER || '',
-        pass: process.env.DB_PASS || ''
-    }
-    var uri = process.env.DB_URI || '';
+    var conn_str = process.env.MONGO_CONNECTION;
 } else {
-    option = {};
-    var uri = 'mongodb://localhost/bitter';
+    var conn_str = 'mongodb://localhost/bitter';
 }
 
 // Mongoose
-mongoose.connect(uri, options);
+mongoose.connect(conn_str);
 
 // Connection
 var db = mongoose.connection;

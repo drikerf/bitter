@@ -125,7 +125,7 @@ $(function () {
                 'data-url="' + uniqueUrl + '"data-count="none" data-via="drikerf"' +
                 'data-text="I just made an awesome really low-res picture: " ' + 
                 'data-lang="en">Tweet</a></p><script type="text/javascript"' +
-                'src="//platform.twitter.com/widgets.js"></script><a href="">Again Again Again!</a>'); 
+                'src="//platform.twitter.com/widgets.js"></script><a href="/">Again Again Again!</a>'); 
     };
 
     // Check if Object is empty
