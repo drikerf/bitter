@@ -16,4 +16,5 @@ block content
                 .row(id=row)
                     each col in [0,1,2,3,4,5,6,7]
                         .pix(id=row+''+col)
+        input#csrf(type="hidden" name="csrfToken" value="#{locals.token}")
         button(class="btn btn-primary btn-lg shareBtn") Share

@@ -11,20 +11,31 @@ var app = express();
 // Environment
 var environ = process.env.NODE_ENV || 'development';
 
-// Set view engine
-app.set('view engine', 'jade');
+app.configure(function () {
+    // Set view engine
+    app.set('view engine', 'jade');
 
-// Set view dir
-app.set('views', __dirname + '/views');
+    // Set view dir
+    app.set('views', __dirname + '/views');
 
-// Set static dir
-app.use(express.static(__dirname + '/public'));
+    // Set static dir
+    app.use(express.static(__dirname + '/public'));
 
-// Logger (use @param 'dev' for development)
-app.use(express.logger());
+    // Logger (use @param 'dev' for development)
+    app.use(express.logger('dev'));
 
-// Bodyparser
-app.use(express.bodyParser());
+    // Bodyparser
+    app.use(express.bodyParser());
+
+    // Use sessions
+    app.use(express.cookieParser());
+    // Session secret
+    var sessionSecret = process.env.SESSION_SECRET || 'notSecret';
+    app.use(express.session({secret: sessionSecret}));
+
+    // Use csrf tokens
+    app.use(express.csrf());
+});
 
 // Mongoose setup
 if (environ == 'production') {
@@ -49,8 +60,8 @@ db.once('open', function callback() {
     app.post('/add', function(req, res) {
         // Get picture
         var pictureBody = req.body;
-
-        // Empty picture?
+        // TODO: Validate picture
+        // Empty picture
         if (Object.keys(pictureBody).length === 0) {
             res.json(null);
         } else {
@@ -87,7 +98,8 @@ db.once('open', function callback() {
 
     // Root
     app.get('/*', function (req, res) {
-        res.render('index');
+        var csrfToken = req.csrfToken();
+        res.render('index', {token: csrfToken});
     });
 
     // Listen

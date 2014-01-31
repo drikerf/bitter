@@ -98,17 +98,26 @@ $(function () {
             $('#content').prepend(alertBoxHTML);
             return;
         }
-        console.log('share!');
-        var data = {'picture': picture};
+        
+        // Get token
+        var token = getToken();
         // Make ajax post.
         $.ajax({
             url: '/add',
             type: 'POST',
+            headers: {
+                'X-CSRF-Token': token
+            },
             data: picture,
             success: notifyUrl,
             'Content-Type': 'application/json'
         });
     });
+
+    function getToken() {
+        var token = $('#csrf').val();
+        return token;
+    }
 
     // Notify user url when picture is saved
     function notifyUrl(picture) {
