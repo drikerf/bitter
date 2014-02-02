@@ -126,7 +126,7 @@ $(function () {
             return;
         }
         // Create unique url
-        var uniqueUrl = 'http://bitter.wobaka.com/'+picture.id;
+        var uniqueUrl = 'http://' + window.location.hostname + '/' + picture.id;
         // Update DOM.
         $('#content').html('<p>Great! So you have unique url for your masterpiece: ' +
                 '<a href="' + uniqueUrl + '">' + uniqueUrl + '</a></p>' +

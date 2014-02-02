@@ -22,7 +22,7 @@ app.configure(function () {
     app.use(express.static(__dirname + '/public'));
 
     // Logger (use @param 'dev' for development)
-    app.use(express.logger('dev'));
+    app.use(express.logger());
 
     // Bodyparser
     app.use(express.bodyParser());
@@ -60,9 +60,11 @@ db.once('open', function callback() {
     app.post('/add', function(req, res) {
         // Get picture
         var pictureBody = req.body;
+        console.log(typeof pictureBody);
         // TODO: Validate picture
         // Empty picture
-        if (Object.keys(pictureBody).length === 0) {
+        if (Object.keys(pictureBody).length === 0 || 
+            typeof pictureBody != 'object') {
             res.json(null);
         } else {
             // New picture

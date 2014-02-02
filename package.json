@@ -1,6 +1,6 @@
 {
   "name": "bitter8",
-  "version": "0.0.1-13",
+  "version": "0.0.1-21",
   "description": "Bitter, 8x8 fun",
   "private": true,
   "main": "index.js",
@@ -17,7 +17,8 @@
   },
   "subdomain": "bitter8",
   "domains": [
-    "bitter.wobaka.com"
+    "www.bitter8.com",
+    "bitter8.com"
   ],
   "engines": {
     "node": "0.10.x"
