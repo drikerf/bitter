@@ -42,7 +42,18 @@ $(function () {
             
             // Add to picture
             picture[key] = data.picture[key];
+
+            // Add clearing info.
+            addClearInfo();
         }
+    }
+
+    // Add grid clear info
+    function addClearInfo() {
+    var infoBoxHTML = '<button type="button" data-dismiss="alert" ' + 
+        'aria-hidden="true" class="close">&times;</button>' +
+        '<strong>Psst!</strong> Click on logo to clear'
+    $('#info').html(infoBoxHTML);
     }
 
     // On pix click, fill pix with currentColor
@@ -91,11 +102,10 @@ $(function () {
     $('.shareBtn').on('click', function () {
         // If empty, notify error in #alert
         if (isEmpty(picture)) {
-            var alertBoxHTML = '<div class="alert alert-danger alert-dismissable">' + 
-                '<button type="button" data-dismiss="alert" ' + 
+            var alertBoxHTML = '<button type="button" data-dismiss="alert" ' + 
                 'aria-hidden="true" class="close">&times;</button>' +
                 '<strong>Draw something first!</strong>'
-            $('#content').prepend(alertBoxHTML);
+            $('#info').html(alertBoxHTML);
             return;
         }
         
